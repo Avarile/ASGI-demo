@@ -1,6 +1,6 @@
-import { paramCase } from 'src/utils/change-case';
+import {paramCase} from 'src/utils/change-case';
 
-import { _id, _postTitles } from 'src/_mock/assets';
+import {_id, _postTitles} from 'src/_mock/assets';
 
 // ----------------------------------------------------------------------
 
@@ -38,12 +38,12 @@ export const paths = {
     root: `/product`,
     checkout: `/product/checkout`,
     details: (id: string) => `/product/${id}`,
-    demo: { details: `/product/${MOCK_ID}` },
+    demo: {details: `/product/${MOCK_ID}`},
   },
   post: {
     root: `/post`,
     details: (title: string) => `/post/${paramCase(title)}`,
-    demo: { details: `/post/${paramCase(MOCK_TITLE)}` },
+    demo: {details: `/post/${paramCase(MOCK_TITLE)}`},
   },
   // AUTH
   auth: {
@@ -94,6 +94,7 @@ export const paths = {
   // DASHBOARD
   dashboard: {
     root: ROOTS.DASHBOARD,
+    learning: `${ROOTS.DASHBOARD}/learning`,
     mail: `${ROOTS.DASHBOARD}/mail`,
     chat: `${ROOTS.DASHBOARD}/chat`,
     blank: `${ROOTS.DASHBOARD}/blank`,
@@ -167,6 +168,16 @@ export const paths = {
       demo: {
         details: `${ROOTS.DASHBOARD}/business/${MOCK_ID}`,
         edit: `${ROOTS.DASHBOARD}/business/${MOCK_ID}/edit`,
+      },
+    },
+    services: {
+      root: `${ROOTS.DASHBOARD}/services`,
+      new: `${ROOTS.DASHBOARD}/services/new`,
+      details: (id: string) => `${ROOTS.DASHBOARD}/services/${id}`,
+      edit: (id: string) => `${ROOTS.DASHBOARD}/services/${id}/edit`,
+      demo: {
+        details: `${ROOTS.DASHBOARD}/services/${MOCK_ID}`,
+        edit: `${ROOTS.DASHBOARD}/services/${MOCK_ID}/edit`,
       },
     },
     tour: {

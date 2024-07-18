@@ -51,6 +51,9 @@ export const navData = [
     subheader: '',
     items: [
       {title: 'General Info', path: paths.dashboard.root, icon: ICONS.dashboard},
+      {title: 'Learning Track', path: paths.dashboard.learning, icon: ICONS.dashboard},
+      {title: 'Platform Analysis', path: paths.dashboard.general.analytics, icon: ICONS.analytics},
+      {title: 'Income Analysis', path: paths.dashboard.general.banking, icon: ICONS.banking},
       // {title: 'Ecommerce', path: paths.dashboard.general.ecommerce, icon: ICONS.ecommerce},
       // {title: 'Analytics', path: paths.dashboard.general.analytics, icon: ICONS.analytics},
       // {title: 'Banking', path: paths.dashboard.general.banking, icon: ICONS.banking},
@@ -65,19 +68,19 @@ export const navData = [
   {
     subheader: '',
     items: [
-      // {
-      //   title: 'User',
-      //   path: paths.dashboard.user.root,
-      //   icon: ICONS.user,
-      //   children: [
-      //     {title: 'Profile', path: paths.dashboard.user.root},
-      //     {title: 'Cards', path: paths.dashboard.user.cards},
-      //     {title: 'List', path: paths.dashboard.user.list},
-      //     {title: 'Create', path: paths.dashboard.user.new},
-      //     {title: 'Edit', path: paths.dashboard.user.demo.edit},
-      //     {title: 'Account', path: paths.dashboard.user.account},
-      //   ],
-      // },
+      {
+        title: 'User account',
+        path: paths.dashboard.user.root,
+        icon: ICONS.user,
+        children: [
+          // {title: 'Profile', path: paths.dashboard.user.root},
+          // {title: 'Cards', path: paths.dashboard.user.cards},
+          // {title: 'List', path: paths.dashboard.user.list},
+          // {title: 'Create', path: paths.dashboard.user.new},
+          // {title: 'Edit', path: paths.dashboard.user.demo.edit},
+          {title: 'Account', path: paths.dashboard.user.account},
+        ],
+      },
       {
         title: 'Course',
         path: paths.dashboard.course.root,
@@ -87,6 +90,14 @@ export const navData = [
           {title: 'Details', path: paths.dashboard.course.demo.details},
           {title: 'Create', path: paths.dashboard.course.new},
           {title: 'Edit', path: paths.dashboard.course.demo.edit},
+        ],
+      },
+      {
+        title: 'Scalling',
+        path: paths.dashboard.course.root,
+        icon: ICONS.product,
+        children: [
+          {title: 'Details', path: paths.dashboard.tour.demo.details},
         ],
       },
       // {
@@ -129,6 +140,14 @@ export const navData = [
           {title: 'Details', path: paths.dashboard.business.demo.details},
           {title: 'Create', path: paths.dashboard.business.new},
           {title: 'Edit', path: paths.dashboard.business.demo.edit},
+        ],
+      },
+      {
+        title: 'Services details',
+        path: paths.dashboard.services.root,
+        icon: ICONS.job,
+        children: [
+          {title: 'Details', path: paths.dashboard.services.demo.details},
         ],
       },
       // {

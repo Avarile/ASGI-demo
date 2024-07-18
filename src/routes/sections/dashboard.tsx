@@ -45,6 +45,8 @@ const BlogNewPostPage = lazy(() => import('src/pages/dashboard/post/new'));
 const BlogEditPostPage = lazy(() => import('src/pages/dashboard/post/edit'));
 // Job
 const JobDetailsPage = lazy(() => import('src/pages/dashboard/job/details'));
+const JobDetails2Page = lazy(() => import('src/pages/dashboard/job/details2'));
+
 const JobListPage = lazy(() => import('src/pages/dashboard/job/list'));
 const JobCreatePage = lazy(() => import('src/pages/dashboard/job/new'));
 const JobEditPage = lazy(() => import('src/pages/dashboard/job/edit'));
@@ -84,22 +86,23 @@ export const dashboardRoutes = [
       {element: <IndexPage/>, index: true},
       {path: 'ecommerce', element: <OverviewEcommercePage/>},
       {path: 'analytics', element: <OverviewAnalyticsPage/>},
+      {path: 'learning', element: <OverviewCoursePage/>},
       {path: 'banking', element: <OverviewBankingPage/>},
       {path: 'booking', element: <OverviewBookingPage/>},
       {path: 'file', element: <OverviewFilePage/>},
       {path: 'course', element: <OverviewCoursePage/>},
-      // {
-      //   path: 'user',
-      //   children: [
-      //     { element: <UserProfilePage />, index: true },
-      //     { path: 'profile', element: <UserProfilePage /> },
-      //     { path: 'cards', element: <UserCardsPage /> },
-      //     { path: 'list', element: <UserListPage /> },
-      //     { path: 'new', element: <UserCreatePage /> },
-      //     { path: ':id/edit', element: <UserEditPage /> },
-      //     { path: 'account', element: <UserAccountPage /> },
-      //   ],
-      // },
+      {
+        path: 'user',
+        children: [
+          {element: <UserProfilePage/>, index: true},
+          {path: 'profile', element: <UserProfilePage/>},
+          {path: 'cards', element: <UserCardsPage/>},
+          {path: 'list', element: <UserListPage/>},
+          {path: 'new', element: <UserCreatePage/>},
+          {path: ':id/edit', element: <UserEditPage/>},
+          {path: 'account', element: <UserAccountPage/>},
+        ],
+      },
       {
         path: 'course',
         children: [
@@ -147,6 +150,13 @@ export const dashboardRoutes = [
           {path: ':id', element: <JobDetailsPage/>},
           {path: 'new', element: <JobCreatePage/>},
           {path: ':id/edit', element: <JobEditPage/>},
+        ],
+      },
+      {
+        path: 'services',
+        children: [
+          {element: <JobListPage/>, index: true},
+          {path: ':id', element: <JobDetails2Page/>},
         ],
       },
       {
