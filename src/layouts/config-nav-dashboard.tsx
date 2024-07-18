@@ -51,9 +51,7 @@ export const navData = [
     subheader: '',
     items: [
       {title: 'General Info', path: paths.dashboard.root, icon: ICONS.dashboard},
-      {title: 'Learning Track', path: paths.dashboard.learning, icon: ICONS.dashboard},
-      {title: 'Platform Analysis', path: paths.dashboard.general.analytics, icon: ICONS.analytics},
-      {title: 'Income Analysis', path: paths.dashboard.general.banking, icon: ICONS.banking},
+      {title: 'Learning Progress', path: paths.dashboard.learning, icon: ICONS.dashboard},
       // {title: 'Ecommerce', path: paths.dashboard.general.ecommerce, icon: ICONS.ecommerce},
       // {title: 'Analytics', path: paths.dashboard.general.analytics, icon: ICONS.analytics},
       // {title: 'Banking', path: paths.dashboard.general.banking, icon: ICONS.banking},
@@ -172,9 +170,11 @@ export const navData = [
       //     </Label>
       //   ),
       // },
-      {title: 'Chat', path: paths.dashboard.chat, icon: ICONS.chat},
-      // {title: 'Calendar', path: paths.dashboard.calendar, icon: ICONS.calendar},
       // {title: 'Kanban', path: paths.dashboard.kanban, icon: ICONS.kanban},
+      {title: 'Chat', path: paths.dashboard.chat, icon: ICONS.chat},
+      {title: 'Calendar', path: paths.dashboard.calendar, icon: ICONS.calendar},
+      {title: 'Platform Analysis-ADMIN ONLY', path: paths.dashboard.general.analytics, icon: ICONS.analytics},
+      {title: 'Income Analysis-ADMIN ONLY', path: paths.dashboard.general.banking, icon: ICONS.banking},
     ],
   },
   /**

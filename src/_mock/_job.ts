@@ -3,8 +3,8 @@ import { _mock } from './_mock';
 // ----------------------------------------------------------------------
 
 export const JOB_DETAILS_TABS = [
-  { label: 'Job content', value: 'content' },
-  { label: 'Candidates', value: 'candidates' },
+  { label: 'Service content', value: 'content' },
+  { label: 'Provider', value: 'candidates' },
 ];
 
 export const JOB_SKILL_OPTIONS = [
@@ -79,7 +79,7 @@ const CANDIDATES = [...Array(12)].map((_, index) => ({
 }));
 
 const CONTENT = `
-<h6>Job description</h6>
+<h6>Service description</h6>
 
 <p>Occaecati est et illo quibusdam accusamus qui. Incidunt aut et molestiae ut facere aut. Est quidem iusto praesentium excepturi harum nihil tenetur facilis. Ut omnis voluptates nihil accusantium doloribus eaque debitis.</p>
 
