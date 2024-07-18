@@ -78,10 +78,10 @@ export function JwtSignUpView() {
       });
       await checkUserSession?.();
 
-      router.refresh();
+      router.push(paths.dashboard.root);
     } catch (error) {
       console.error(error);
-      setErrorMsg(error instanceof Error ? error.message : error);
+      setErrorMsg(error.message);
     }
   });
 
@@ -169,7 +169,7 @@ export function JwtSignUpView() {
 
       {!!errorMsg && (
         <Alert severity="error" sx={{ mb: 3 }}>
-          {errorMsg}
+          {Array.isArray(errorMsg) ? errorMsg.join('/n') : errorMsg}
         </Alert>
       )}
 

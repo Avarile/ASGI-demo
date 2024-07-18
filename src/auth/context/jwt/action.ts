@@ -1,7 +1,7 @@
-import axios, {endpoints} from 'src/utils/axios';
+import axios, { endpoints } from 'src/utils/axios';
 
-import {setSession} from './utils';
-import {STORAGE_KEY} from './constant';
+import { setSession } from './utils';
+import { STORAGE_KEY } from './constant';
 
 // ----------------------------------------------------------------------
 
@@ -20,28 +20,30 @@ export type SignUpParams = {
 /** **************************************
  * Sign in
  *************************************** */
-export const signInWithPassword = async ({email, password}: SignInParams): Promise<void> => {
+export const signInWithPassword = async ({ email, password }: SignInParams): Promise<void> => {
   try {
-    const params = {email, password};
+    const params = { email, password };
 
-    const {accessToken} = {
-      "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI4ODY0YzcxNy01ODdkLTQ3MmEtOTI5YS04ZTVmMjk4MDI0ZGEtMCIsImlhdCI6MTcyMTI3NjQ3MiwiZXhwIjoxNzIxNTM1NjcyfQ.4Q3-CODdIF5HTwVoBylkd4NlgLoDHaCrrFo5TBPGJvY",
-      "user": {
-        "id": "8864c717-587d-472a-929a-8e5f298024da-0",
-        "displayName": "Jaydon Frankie",
-        "photoURL": "https://api-dev-minimal-v6.vercel.app/assets/images/avatar/avatar-25.webp",
-        "phoneNumber": "+1 416-555-0198",
-        "country": "Canada",
-        "address": "90210 Broadway Blvd",
-        "state": "California",
-        "city": "San Francisco",
-        "zipCode": "94116",
-        "about": "Praesent turpis. Phasellus viverra nulla ut metus varius laoreet. Phasellus tempus.",
-        "role": "admin",
-        "isPublic": true,
-        "email": "demo@minimals.cc",
-        "password": "@demo1"
-      }
+    const { accessToken } = {
+      accessToken:
+        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI4ODY0YzcxNy01ODdkLTQ3MmEtOTI5YS04ZTVmMjk4MDI0ZGEtMCIsImlhdCI6MTcyMTI3NjQ3MiwiZXhwIjoxNzIxNTM1NjcyfQ.4Q3-CODdIF5HTwVoBylkd4NlgLoDHaCrrFo5TBPGJvY',
+      user: {
+        id: '8864c717-587d-472a-929a-8e5f298024da-0',
+        displayName: 'Jaydon Frankie',
+        photoURL: 'https://api-dev-minimal-v6.vercel.app/assets/images/avatar/avatar-25.webp',
+        phoneNumber: '+1 416-555-0198',
+        country: 'Canada',
+        address: '90210 Broadway Blvd',
+        state: 'California',
+        city: 'San Francisco',
+        zipCode: '94116',
+        about:
+          'Praesent turpis. Phasellus viverra nulla ut metus varius laoreet. Phasellus tempus.',
+        role: 'admin',
+        isPublic: true,
+        email: 'demo@minimals.cc',
+        password: '@demo1',
+      },
     };
 
     if (!accessToken) {
@@ -59,28 +61,30 @@ export const signInWithPassword = async ({email, password}: SignInParams): Promi
  * Sign up
  *************************************** */
 export const signUp = async ({
-                               email,
-                               password,
-                               firstName,
-                               lastName,
-                             }: SignUpParams): Promise<void> => {
+  email,
+  password,
+  firstName,
+  lastName,
+}: SignUpParams): Promise<void> => {
   const params = {
     email,
     password,
-    firstName,
-    lastName,
+    first_name: firstName,
+    last_name: lastName,
+    mobile: 'test',
   };
 
   try {
     const res = await axios.post(endpoints.auth.signUp, params);
 
-    const {accessToken} = res.data;
+    const { accessToken } = res.data;
+    debugger;
 
-    if (!accessToken) {
-      throw new Error('Access token not found in response');
-    }
+    // if (!accessToken) {
+    //   throw new Error('Access token not found in response');
+    // }
 
-    sessionStorage.setItem(STORAGE_KEY, accessToken);
+    sessionStorage.setItem(STORAGE_KEY, Date.now().toString());
   } catch (error) {
     console.error('Error during sign up:', error);
     throw error;

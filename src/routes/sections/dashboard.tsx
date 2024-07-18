@@ -1,12 +1,12 @@
-import {lazy, Suspense} from 'react';
-import {Outlet} from 'react-router-dom';
+import { lazy, Suspense } from 'react';
+import { Outlet } from 'react-router-dom';
 
-import {CONFIG} from 'src/config-global';
-import {DashboardLayout} from 'src/layouts/dashboard';
+import { CONFIG } from 'src/config-global';
+import { DashboardLayout } from 'src/layouts/dashboard';
 
-import {LoadingScreen} from 'src/components/loading-screen';
+import { LoadingScreen } from 'src/components/loading-screen';
 
-import {AuthGuard} from 'src/auth/guard';
+import { AuthGuard } from 'src/auth/guard';
 
 // ----------------------------------------------------------------------
 
@@ -72,8 +72,8 @@ const BlankPage = lazy(() => import('src/pages/dashboard/blank'));
 
 const layoutContent = (
   <DashboardLayout>
-    <Suspense fallback={<LoadingScreen/>}>
-      <Outlet/>
+    <Suspense fallback={<LoadingScreen />}>
+      <Outlet />
     </Suspense>
   </DashboardLayout>
 );
@@ -81,37 +81,37 @@ const layoutContent = (
 export const dashboardRoutes = [
   {
     path: 'dashboard',
-    element: CONFIG.auth.skip ? <>{layoutContent}</> : <AuthGuard>{layoutContent}</AuthGuard>,
+    element: <>{layoutContent}</>,
     children: [
-      {element: <IndexPage/>, index: true},
-      {path: 'ecommerce', element: <OverviewEcommercePage/>},
-      {path: 'analytics', element: <OverviewAnalyticsPage/>},
-      {path: 'learning', element: <OverviewCoursePage/>},
-      {path: 'banking', element: <OverviewBankingPage/>},
-      {path: 'booking', element: <OverviewBookingPage/>},
-      {path: 'file', element: <OverviewFilePage/>},
-      {path: 'course', element: <OverviewCoursePage/>},
+      { element: <IndexPage />, index: true },
+      { path: 'ecommerce', element: <OverviewEcommercePage /> },
+      { path: 'analytics', element: <OverviewAnalyticsPage /> },
+      { path: 'learning', element: <OverviewCoursePage /> },
+      { path: 'banking', element: <OverviewBankingPage /> },
+      { path: 'booking', element: <OverviewBookingPage /> },
+      { path: 'file', element: <OverviewFilePage /> },
+      { path: 'course', element: <OverviewCoursePage /> },
       {
         path: 'user',
         children: [
-          {element: <UserProfilePage/>, index: true},
-          {path: 'profile', element: <UserProfilePage/>},
-          {path: 'cards', element: <UserCardsPage/>},
-          {path: 'list', element: <UserListPage/>},
-          {path: 'new', element: <UserCreatePage/>},
-          {path: ':id/edit', element: <UserEditPage/>},
-          {path: 'account', element: <UserAccountPage/>},
+          { element: <UserProfilePage />, index: true },
+          { path: 'profile', element: <UserProfilePage /> },
+          { path: 'cards', element: <UserCardsPage /> },
+          { path: 'list', element: <UserListPage /> },
+          { path: 'new', element: <UserCreatePage /> },
+          { path: ':id/edit', element: <UserEditPage /> },
+          { path: 'account', element: <UserAccountPage /> },
         ],
       },
       {
         path: 'course',
         children: [
-          {element: <ProductListPage/>, index: true},
-          {path: 'list', element: <ProductListPage/>},
+          { element: <ProductListPage />, index: true },
+          { path: 'list', element: <ProductListPage /> },
           // {path: ':id', element: <ProductDetailsPage/>},
-          {path: ':title', element: <BlogPostPage/>},
-          {path: 'new', element: <ProductCreatePage/>},
-          {path: ':id/edit', element: <ProductEditPage/>},
+          { path: ':title', element: <BlogPostPage /> },
+          { path: 'new', element: <ProductCreatePage /> },
+          { path: ':id/edit', element: <ProductEditPage /> },
         ],
       },
       // {
@@ -125,58 +125,58 @@ export const dashboardRoutes = [
       {
         path: 'events',
         children: [
-          {element: <ProductListPage/>, index: true},
-          {path: 'list', element: <ProductListPage/>},
-          {path: ':title', element: <BlogPostPage/>},
-          {path: 'new', element: <ProductCreatePage/>},
-          {path: ':id/edit', element: <ProductEditPage/>},
+          { element: <ProductListPage />, index: true },
+          { path: 'list', element: <ProductListPage /> },
+          { path: ':title', element: <BlogPostPage /> },
+          { path: 'new', element: <ProductCreatePage /> },
+          { path: ':id/edit', element: <ProductEditPage /> },
         ],
       },
       {
         path: 'post',
         children: [
-          {element: <BlogPostsPage/>, index: true},
-          {path: 'list', element: <BlogPostsPage/>},
-          {path: ':title', element: <BlogPostPage/>},
-          {path: ':title/edit', element: <BlogEditPostPage/>},
-          {path: 'new', element: <BlogNewPostPage/>},
+          { element: <BlogPostsPage />, index: true },
+          { path: 'list', element: <BlogPostsPage /> },
+          { path: ':title', element: <BlogPostPage /> },
+          { path: ':title/edit', element: <BlogEditPostPage /> },
+          { path: 'new', element: <BlogNewPostPage /> },
         ],
       },
       {
         path: 'business',
         children: [
-          {element: <JobListPage/>, index: true},
-          {path: 'list', element: <JobListPage/>},
-          {path: ':id', element: <JobDetailsPage/>},
-          {path: 'new', element: <JobCreatePage/>},
-          {path: ':id/edit', element: <JobEditPage/>},
+          { element: <JobListPage />, index: true },
+          { path: 'list', element: <JobListPage /> },
+          { path: ':id', element: <JobDetailsPage /> },
+          { path: 'new', element: <JobCreatePage /> },
+          { path: ':id/edit', element: <JobEditPage /> },
         ],
       },
       {
         path: 'services',
         children: [
-          {element: <JobListPage/>, index: true},
-          {path: ':id', element: <JobDetails2Page/>},
+          { element: <JobListPage />, index: true },
+          { path: ':id', element: <JobDetails2Page /> },
         ],
       },
       {
         path: 'tour',
         children: [
-          {element: <TourListPage/>, index: true},
-          {path: 'list', element: <TourListPage/>},
-          {path: ':id', element: <TourDetailsPage/>},
-          {path: 'new', element: <TourCreatePage/>},
-          {path: ':id/edit', element: <TourEditPage/>},
+          { element: <TourListPage />, index: true },
+          { path: 'list', element: <TourListPage /> },
+          { path: ':id', element: <TourDetailsPage /> },
+          { path: 'new', element: <TourCreatePage /> },
+          { path: ':id/edit', element: <TourEditPage /> },
         ],
       },
-      {path: 'file-manager', element: <FileManagerPage/>},
-      {path: 'mail', element: <MailPage/>},
-      {path: 'chat', element: <ChatPage/>},
-      {path: 'calendar', element: <CalendarPage/>},
-      {path: 'kanban', element: <KanbanPage/>},
-      {path: 'permission', element: <PermissionDeniedPage/>},
-      {path: 'params', element: <ParamsPage/>},
-      {path: 'blank', element: <BlankPage/>},
+      { path: 'file-manager', element: <FileManagerPage /> },
+      { path: 'mail', element: <MailPage /> },
+      { path: 'chat', element: <ChatPage /> },
+      { path: 'calendar', element: <CalendarPage /> },
+      { path: 'kanban', element: <KanbanPage /> },
+      { path: 'permission', element: <PermissionDeniedPage /> },
+      { path: 'params', element: <ParamsPage /> },
+      { path: 'blank', element: <BlankPage /> },
     ],
   },
 ];

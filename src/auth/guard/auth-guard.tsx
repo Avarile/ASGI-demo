@@ -45,7 +45,7 @@ export function AuthGuard({ children }: Props) {
       const { method } = CONFIG.auth;
 
       const signInPath = {
-        jwt: paths.auth.jwt.signIn,
+        jwt: paths.auth.jwt.signUp,
         auth0: paths.auth.auth0.signIn,
         amplify: paths.auth.amplify.signIn,
         firebase: paths.auth.firebase.signIn,

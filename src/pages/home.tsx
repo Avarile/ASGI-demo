@@ -1,16 +1,12 @@
-import {useEffect} from "react";
-import {useNavigate} from "react-router-dom";
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-import {paths} from "../routes/paths";
+import { paths } from '../routes/paths';
 
 export default function Page() {
-  const navi = useNavigate()
+  const navi = useNavigate();
   useEffect(() => {
-    navi(paths.dashboard.root)
-  }, [])
-  return (
-    <>
-
-    </>
-  );
+    navi(paths.auth.jwt.signUp);
+  }, []);
+  return <></>;
 }
