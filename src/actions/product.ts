@@ -18,21 +18,63 @@ const swrOptions = {
 type ProductsData = {
   products: IProductItem[];
 };
-
+const temp: IProductItem[] = [];
+for (let i = 0; i < 3; i++) {
+  temp.push({
+    id: i,
+    sku: '2',
+    name: 'string',
+    code: 'string',
+    price: 1,
+    taxes: 1,
+    tags: [],
+    sizes: [],
+    publish: 'string',
+    gender: [],
+    coverUrl: 'string',
+    images: [],
+    colors: [],
+    quantity: 1,
+    category: '',
+    available: 1,
+    totalSold: 1,
+    description: 'string',
+    totalRatings: 1,
+    totalReviews: 1,
+    inventoryType: 'string',
+    subDescription: 'string',
+    priceSale: 1,
+    reviews: [],
+    ratings: [
+      {
+        name: 'string',
+        starCount: 1,
+        reviewCount: 1,
+      },
+    ],
+    saleLabel: {
+      enabled: false,
+      content: 'string',
+    },
+    newLabel: {
+      enabled: false,
+      content: 'string',
+    },
+  });
+}
 export function useGetProducts() {
   const url = endpoints.product.list;
-
   const { data, isLoading, error, isValidating } = useSWR<ProductsData>(url, fetcher, swrOptions);
 
   const memoizedValue = useMemo(
     () => ({
-      products: data?.products || [],
+      products: temp,
       productsLoading: isLoading,
       productsError: error,
       productsValidating: isValidating,
       productsEmpty: !isLoading && !data?.products.length,
     }),
-    [data?.products, error, isLoading, isValidating]
+    [temp, data?.products, error, isLoading, isValidating]
   );
 
   return memoizedValue;

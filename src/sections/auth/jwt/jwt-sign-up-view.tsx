@@ -38,6 +38,7 @@ export const SignUpSchema = zod.object({
     .string()
     .min(1, { message: 'Password is required!' })
     .min(6, { message: 'Password must be at least 6 characters!' }),
+  mobile: zod.number(),
 });
 
 // ----------------------------------------------------------------------
@@ -51,16 +52,8 @@ export function JwtSignUpView() {
 
   const [errorMsg, setErrorMsg] = useState('');
 
-  const defaultValues = {
-    firstName: 'Hello',
-    lastName: 'Friend',
-    email: 'hello@gmail.com',
-    password: '@demo1',
-  };
-
   const methods = useForm<SignUpSchemaType>({
     resolver: zodResolver(SignUpSchema),
-    defaultValues,
   });
 
   const {
@@ -75,6 +68,7 @@ export function JwtSignUpView() {
         password: data.password,
         firstName: data.firstName,
         lastName: data.lastName,
+        mobile: data.mobile,
       });
       await checkUserSession?.();
 
@@ -126,7 +120,13 @@ export function JwtSignUpView() {
           ),
         }}
       />
-
+      <Field.Text
+        name="mobile"
+        label="mobile"
+        placeholder="mobile"
+        type={'number'}
+        InputLabelProps={{ shrink: true }}
+      />
       <LoadingButton
         fullWidth
         color="inherit"

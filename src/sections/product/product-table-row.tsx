@@ -1,16 +1,17 @@
 import type { GridCellParams } from '@mui/x-data-grid';
 
-import Box from '@mui/material/Box';
-import Link from '@mui/material/Link';
-import Stack from '@mui/material/Stack';
 import Avatar from '@mui/material/Avatar';
-import ListItemText from '@mui/material/ListItemText';
+import Box from '@mui/material/Box';
 import LinearProgress from '@mui/material/LinearProgress';
+import Link from '@mui/material/Link';
+import ListItemText from '@mui/material/ListItemText';
+import Stack from '@mui/material/Stack';
 
 import { fCurrency } from 'src/utils/format-number';
-import { fTime, fDate } from 'src/utils/format-time';
+import { fDate, fTime } from 'src/utils/format-time';
 
-import { Label } from 'src/components/label';
+import { Button } from '@mui/material';
+import axios from 'src/utils/axios';
 
 // ----------------------------------------------------------------------
 
@@ -24,9 +25,15 @@ export function RenderCellPrice({ params }: ParamsProps) {
 
 export function RenderCellPublish({ params }: ParamsProps) {
   return (
-    <Label variant="soft" color={(params.row.publish === 'published' && 'info') || 'default'}>
-      {params.row.publish}
-    </Label>
+    <Button
+      onClick={async () => {
+        const res = await axios.post('/api/demo-data/purchase', {
+          product_id: params.id,
+        });
+      }}
+    >
+      Purchase
+    </Button>
   );
 }
 

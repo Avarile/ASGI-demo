@@ -181,40 +181,6 @@ export function ProductListView() {
       valueOptions: PUBLISH_OPTIONS,
       renderCell: (params) => <RenderCellPublish params={params} />,
     },
-    {
-      type: 'actions',
-      field: 'actions',
-      headerName: ' ',
-      align: 'right',
-      headerAlign: 'right',
-      width: 80,
-      sortable: false,
-      filterable: false,
-      disableColumnMenu: true,
-      getActions: (params) => [
-        <GridActionsCellItem
-          showInMenu
-          icon={<Iconify icon="solar:eye-bold" />}
-          label="View"
-          onClick={() => handleViewRow(params.row.id)}
-        />,
-        <GridActionsCellItem
-          showInMenu
-          icon={<Iconify icon="solar:pen-bold" />}
-          label="Edit"
-          onClick={() => handleEditRow(params.row.id)}
-        />,
-        <GridActionsCellItem
-          showInMenu
-          icon={<Iconify icon="solar:trash-bin-trash-bold" />}
-          label="Delete"
-          onClick={() => {
-            handleDeleteRow(params.row.id);
-          }}
-          sx={{ color: 'error.main' }}
-        />,
-      ],
-    },
   ];
 
   const getTogglableColumns = () =>
@@ -258,7 +224,6 @@ export function ProductListView() {
             disableRowSelectionOnClick
             rows={dataFiltered}
             columns={columns}
-            loading={productsLoading}
             getRowHeight={() => 'auto'}
             pageSizeOptions={[5, 10, 25]}
             initialState={{ pagination: { paginationModel: { pageSize: 10 } } }}
