@@ -120,7 +120,7 @@ export function JobListView() {
         heading="List"
         links={[
           { name: 'Dashboard', href: paths.dashboard.root },
-          { name: 'Job', href: paths.dashboard.business.root },
+          { name: 'Services', href: paths.dashboard.business.root },
           { name: 'List' },
         ]}
         action={
@@ -130,7 +130,7 @@ export function JobListView() {
             variant="contained"
             startIcon={<Iconify icon="mingcute:add-line" />}
           >
-            New job
+            New Service
           </Button>
         }
         sx={{ mb: { xs: 3, md: 5 } }}
