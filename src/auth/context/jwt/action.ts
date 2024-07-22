@@ -15,7 +15,7 @@ export type SignUpParams = {
   password: string;
   firstName: string;
   lastName: string;
-  mobile: number;
+  mobile: string;
 };
 
 /** **************************************
@@ -80,7 +80,6 @@ export const signUp = async ({
     const res = await axios.post(endpoints.auth.signUp, params);
 
     const { accessToken } = res.data;
-    debugger;
 
     // if (!accessToken) {
     //   throw new Error('Access token not found in response');

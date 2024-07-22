@@ -38,7 +38,7 @@ export const SignUpSchema = zod.object({
     .string()
     .min(1, { message: 'Password is required!' })
     .min(6, { message: 'Password must be at least 6 characters!' }),
-  mobile: zod.number(),
+  mobile: zod.string().min(1, { message: 'Mobile is required!' })
 });
 
 // ----------------------------------------------------------------------
@@ -124,7 +124,7 @@ export function JwtSignUpView() {
         name="mobile"
         label="mobile"
         placeholder="mobile"
-        type={'number'}
+        type="string"
         InputLabelProps={{ shrink: true }}
       />
       <LoadingButton
