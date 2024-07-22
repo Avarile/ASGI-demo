@@ -24,12 +24,15 @@ export function RenderCellPrice({ params }: ParamsProps) {
 }
 
 export function RenderCellPublish({ params }: ParamsProps) {
+  const { id } = localStorage.getItem('USER') || {};
   return (
     <Button
       onClick={async () => {
         const res = await axios.post('/api/demo-data/purchase', {
-          product_id: params.id,
+          product_id: 'price_1PbZ5FC6VEQCWIDfU8uYRT2D',
+          user_id: id,
         });
+        window.location.href = res.data.url;
       }}
     >
       Purchase

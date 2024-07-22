@@ -1,12 +1,9 @@
 import { lazy, Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 
-import { CONFIG } from 'src/config-global';
 import { DashboardLayout } from 'src/layouts/dashboard';
 
 import { LoadingScreen } from 'src/components/loading-screen';
-
-import { AuthGuard } from 'src/auth/guard';
 
 // ----------------------------------------------------------------------
 
@@ -26,6 +23,9 @@ const ProductEditPage = lazy(() => import('src/pages/dashboard/product/edit'));
 // Order
 const OrderListPage = lazy(() => import('src/pages/dashboard/order/list'));
 const OrderDetailsPage = lazy(() => import('src/pages/dashboard/order/details'));
+// Payment
+const PaymentSuccess = lazy(() => import('src/pages/dashboard/payment/success'));
+const PaymentFailure = lazy(() => import('src/pages/dashboard/payment/failure'));
 // Invoice
 const InvoiceListPage = lazy(() => import('src/pages/dashboard/invoice/list'));
 const InvoiceDetailsPage = lazy(() => import('src/pages/dashboard/invoice/details'));
@@ -122,6 +122,13 @@ export const dashboardRoutes = [
       //     {path: ':id', element: <OrderDetailsPage/>},
       //   ],
       // },
+      {
+        path: 'payment',
+        children: [
+          { path: 'success', element: <PaymentSuccess /> },
+          { path: 'failure', element: <PaymentFailure /> },
+        ],
+      },
       {
         path: 'events',
         children: [
