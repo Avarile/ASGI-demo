@@ -63,13 +63,14 @@ export function JwtSignUpView() {
 
   const onSubmit = handleSubmit(async (data) => {
     try {
-      await signUp({
+      const res = await signUp({
         email: data.email,
         password: data.password,
         firstName: data.firstName,
         lastName: data.lastName,
         mobile: data.mobile,
       });
+      debugger;
       await checkUserSession?.();
 
       router.push(paths.dashboard.root);
