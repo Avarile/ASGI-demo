@@ -15,7 +15,7 @@ export type SignUpParams = {
   password: string;
   firstName: string;
   lastName: string;
-  mobile: number;
+  mobile: string;
 };
 
 /** **************************************
