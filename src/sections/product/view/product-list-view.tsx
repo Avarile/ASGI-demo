@@ -1,31 +1,30 @@
+import type {
+  GridColDef,
+  GridColumnVisibilityModel,
+  GridRowSelectionModel,
+  GridSlots,
+} from '@mui/x-data-grid';
 import type { UseSetStateReturn } from 'src/hooks/use-set-state';
 import type { IProductItem, IProductTableFilters } from 'src/types/product';
-import type {
-  GridSlots,
-  GridColDef,
-  GridRowSelectionModel,
-  GridColumnVisibilityModel,
-} from '@mui/x-data-grid';
 
-import { useState, useEffect, useCallback } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
+import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
 import Stack from '@mui/material/Stack';
-import Button from '@mui/material/Button';
 import {
   DataGrid,
   gridClasses,
-  GridToolbarExport,
-  GridActionsCellItem,
-  GridToolbarContainer,
-  GridToolbarQuickFilter,
-  GridToolbarFilterButton,
   GridToolbarColumnsButton,
+  GridToolbarContainer,
+  GridToolbarExport,
+  GridToolbarFilterButton,
+  GridToolbarQuickFilter,
 } from '@mui/x-data-grid';
 
-import { paths } from 'src/routes/paths';
-import { useRouter } from 'src/routes/hooks';
 import { RouterLink } from 'src/routes/components';
+import { useRouter } from 'src/routes/hooks';
+import { paths } from 'src/routes/paths';
 
 import { useBoolean } from 'src/hooks/use-boolean';
 import { useSetState } from 'src/hooks/use-set-state';
@@ -34,21 +33,21 @@ import { PRODUCT_STOCK_OPTIONS } from 'src/_mock';
 import { useGetProducts } from 'src/actions/product';
 import { DashboardContent } from 'src/layouts/dashboard';
 
-import { toast } from 'src/components/snackbar';
-import { Iconify } from 'src/components/iconify';
-import { EmptyContent } from 'src/components/empty-content';
-import { ConfirmDialog } from 'src/components/custom-dialog';
 import { CustomBreadcrumbs } from 'src/components/custom-breadcrumbs';
+import { ConfirmDialog } from 'src/components/custom-dialog';
+import { EmptyContent } from 'src/components/empty-content';
+import { Iconify } from 'src/components/iconify';
+import { toast } from 'src/components/snackbar';
 
-import { ProductTableToolbar } from '../product-table-toolbar';
 import { ProductTableFiltersResult } from '../product-table-filters-result';
 import {
-  RenderCellStock,
-  RenderCellPrice,
-  RenderCellPublish,
-  RenderCellProduct,
   RenderCellCreatedAt,
+  RenderCellPrice,
+  RenderCellProduct,
+  RenderCellPublish,
+  RenderCellStock,
 } from '../product-table-row';
+import { ProductTableToolbar } from '../product-table-toolbar';
 
 // ----------------------------------------------------------------------
 
@@ -68,7 +67,7 @@ export function ProductListView() {
 
   const router = useRouter();
 
-  const { products, productsLoading } = useGetProducts();
+  const { products } = useGetProducts();
 
   const filters = useSetState<IProductTableFilters>({ publish: [], stock: [] });
 
@@ -91,17 +90,6 @@ export function ProductListView() {
 
   const dataFiltered = applyFilter({ inputData: tableData, filters: filters.state });
 
-  const handleDeleteRow = useCallback(
-    (id: string) => {
-      const deleteRow = tableData.filter((row) => row.id !== id);
-
-      toast.success('Delete success!');
-
-      setTableData(deleteRow);
-    },
-    [tableData]
-  );
-
   const handleDeleteRows = useCallback(() => {
     const deleteRows = tableData.filter((row) => !selectedRowIds.includes(row.id));
 
@@ -109,13 +97,6 @@ export function ProductListView() {
 
     setTableData(deleteRows);
   }, [selectedRowIds, tableData]);
-
-  const handleEditRow = useCallback(
-    (id: string) => {
-      router.push(paths.dashboard.course.edit(id));
-    },
-    [router]
-  );
 
   const handleViewRow = useCallback(
     (id: string) => {
@@ -170,7 +151,6 @@ export function ProductListView() {
       headerName: 'Price',
       width: 140,
       editable: true,
-      renderCell: (params) => <RenderCellPrice params={params} />,
     },
     {
       field: 'publish',
